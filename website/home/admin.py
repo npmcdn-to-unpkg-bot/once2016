@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import UserPhoto
+from .models import Appointment
+from .models import AvailableTime
+
+
+admin.site.register(UserPhoto)
+admin.site.register(Appointment)
+admin.site.register(AvailableTime)
