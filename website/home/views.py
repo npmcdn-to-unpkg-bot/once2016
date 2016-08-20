@@ -11,4 +11,6 @@ import datetime
 logging.basicConfig(level=logging.DEBUG)
 
 def index(request):
-    return HttpResponse("Welcome to Once studio")
+    context = {}
+    return render(request, 'index.html', context)
+    #return HttpResponse("Welcome to Once studio")
