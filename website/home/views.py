@@ -34,9 +34,9 @@ def about(request):
 	context = {}
 	return render(request, 'about.html', context)
 
-def photos(request):
+def public_photos(request):
 	context = {}
-	return render(request, 'photos.html', context)
+	return render(request, 'public_photos.html', context)
 
 def getphoto(request):
 	context = {}
