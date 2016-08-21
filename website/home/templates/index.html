@@ -1,35 +1,311 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="/static/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap-theme.min.css">
+
+
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<meta charset="utf-8">
+<title>Once Photography</title>
+<meta name="description" content="blueimp Gallery is a touch-enabled, responsive and customizable image and video gallery, carousel and lightbox, optimized for both mobile and desktop web browsers. It features swipe, mouse and keyboard navigation, transition effects, slideshow functionality, fullscreen support and on-demand content loading and can be extended to display additional content types.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap-theme.min.css">
+
+
+<link rel="stylesheet" href="/static/css/swipe.css">
+
+<link rel="stylesheet" href="/static/css/style.css">
+
 </head>
 <body>
-<h1 class="text-center"> Github User Data </h1>
-	<div class="col-lg-12">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped tablesorter">
-                <thead>
-                <tr>
-                  <th class="header"> Username <i class="icon-sort"></i></th>
-                  <th class="header"> Blog <i class="icon-sort"></i></th>
-                  <th class="header"> Public Repos <i class="icon-sort"></i></th>
-                  <th class="header"> Public Gists <i class="icon-sort"></i></th>
-                  <th class="header"> Email <i class="icon-sort"></i></th>
-                  <th class="header"> Followers <i class="icon-sort"></i></th>
-                  <th class="header"> Following <i class="icon-sort"></i></th>
-                </tr>
-            </thead>
-            <tbody>
-            
-            
-            <h1>Welcome to Once photograph</h1>
 
-            </tbody>
-            </table>
-        </div>
+
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img alt="Brand" height="26px" src="/static/images/once-logo.png">
+        </a>
+
+      </div>
+
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Once <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">服务介绍</a></li>
+          <li><a href="#">作品展示</a></li>
+          <li><a href="#">摄影分享</a></li> 
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">立即预约</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">联系我们 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">微信</a></li>
+              <li><a href="#">微博</a></li>
+              <li><a href="#">电话</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">地址</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+
+
+  <!-- jquery image gallery, refer to http://www.w3schools.com/bootstrap/bootstrap_theme_band.asp#myPage -->
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="/static/images/banner1.png" alt="New York" width="100%" height="700">
+      </div>
+
+      <div class="item">
+        <img src="/static/images/banner2.jpg" alt="Chicago" width="100%" height="700">
+      </div>
+
+      <div class="item"> 
+        <img src="/static/images/banner3.jpg" alt="Los Angeles" width="100%" height="700">
+      </div>
     </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+<!-- swipe image gallery 
+<div id='mySwipe' style='min-width:1000px;margin:0 auto' class='swipe'>
+  <div class='swipe-wrap'>
+
+<div><img width="100%" src="/static/images/banner1.png" alt="Banana"></div>
+<div><img width="100%" src="/static/images/banner2.jpg" alt="Banana"></div>
+<div><img width="100%" src="/static/images/banner3.jpg" alt="Banana"></div>
+
+</div>
+
+  <div style='text-align:center;padding-top:20px;'>
+  
+  <button onclick='mySwipe.prev()'>prev</button> 
+  <button onclick='mySwipe.next()'>next</button>
+
+</div>
+--> 
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 class="text-center"> Once 2016 </h1>
+
+
+<div class="col-lg-12">
+  <div class="table-responsive">
+
+    <h1>Welcome to Once photograph</h1>
+
+  </div>
+</div>
+
+
+
+<!-- 
+<style>
+#googleMap {
+    width: 100%; /* Span the entire width of the screen */
+    height: 400px; /* Set the height to 400 pixels */
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%); /* Change the color of the map to black and white * /
+}
+</style>
+<div id="googleMap"></div>
+-->
+
+<!-- footer -->
+
+
+
+
+
+
+
+
+
+<footer>
+  <div class="footer" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12">
+          <h3>关于</h3>
+          <ul>
+            <li> <a href="#">团队展示</a> </li>
+            <li> <a href="#">作品展示</a> </li>
+          </ul>
+        </div>
+        <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12">
+          <h3>合作</h3>
+          <ul>
+            <li> <a href="#">人才招聘</a> </li>
+            <li> <a href="#">企业加盟</a> </li>
+          </ul>
+        </div>
+        <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12">
+          <h3>帮助</h3>
+          <ul>
+            <li> <a href="#">拍摄流程</a> </li>
+            <li> <a href="#">联系我们</a> </li>
+          </ul>
+        </div>
+        <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12">
+          <h3>更多</h3>
+          <ul>
+            <li> <a href="#">绘画写真</a> </li>
+            <li> <a href="#">常见问题</a> </li>
+          </ul>
+        </div>
+
+
+
+      </div>
+      <!--/.row--> 
+    </div>
+    <!--/.container--> 
+
+
+    <div style='margin:40px 20px auto auto' class="footer-copyright text-center rgba-black-light">
+      <div class="container-fluid">
+        <small>© 2016 Once摄影工作室 浙ICP备11062584号-3　<img width="10px" src="/static/images/chinese-police-logo.png"/>浙公网安备 33011802000662号 
+        </small>
+      </div>
+    </div>
+
+
+  </div>
+  <!--/.footer-->
+
+</footer>
+
+
+
+
+
+
+
+
+
+</footer>
+
+
+
+
+
+
+
+
+
 </body>
+
+
+<script src="/static/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+<script src="/static/js/swipe.js"></script>
+
+
+
+<!-- Add Google Maps 
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+
+function initialize() {
+var mapProp = {
+center:myCenter,
+zoom:12,
+scrollwheel:false,
+draggable:false,
+mapTypeId:google.maps.MapTypeId.ROADMAP
+};
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker = new google.maps.Marker({
+position:myCenter,
+});
+
+marker.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+-->
+
+
+
+
+
+<!-- window.mySwipe = Swipe(document.getElementById('slider')); -->
+<script>
+
+// pure JS
+var elem = document.getElementById('mySwipe');
+window.mySwipe = Swipe(elem, {
+  // startSlide: 4,
+  // auto: 3000,
+  // continuous: true,
+  // disableScroll: true,
+  // stopPropagation: true,
+  // callback: function(index, element) {},
+  // transitionEnd: function(index, element) {}
+});
+
+// with jQuery
+// window.mySwipe = $('#mySwipe').Swipe().data('Swipe');
+
+</script>
+
+
+
+
+
+
+
+
+
 </html>
