@@ -78,6 +78,16 @@
 
 	</table>
 
+        <form enctype="multipart/form-data" action="" method="post">{% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Upload image">
+        </form>
+
+
+	
+
 	<hr/>
 	<h2>数据库管理</h2>
 	<p>添加管理员、修改数据库请访问<a href="/admin"> /admin </a>。</p>

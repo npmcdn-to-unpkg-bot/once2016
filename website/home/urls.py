@@ -14,7 +14,6 @@ urlpatterns = [
     url(r'^getphoto/result/$', views.getphoto_result, name='getphoto_result'),
     url(r'^appointment/$', views.appointment, name='appointment'),
     url(r'^appointment/result/$', views.appointment_result, name='appointment_result'),
-    url(r'^upload_file/$', views.upload_file, name='upload_file'),
     # Admin url
     url(r'^once/$', views.once_manage, name='once_manage'),
 ]

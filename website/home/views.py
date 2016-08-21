@@ -89,17 +89,7 @@ def appointment_result(request):
 
 
 
-# Refer to https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#the-staff-member-required-decorator
-@staff_member_required
-def once_manage(request):
-    appointments = Appointment.objects.order_by('id')
-    user_photos = UserPhoto.objects.order_by('id')
 
-    context = {
-        "appointments": appointments,
-        "user_photos": user_photos,
-    }
-    return render(request, 'once_manage.html', context)
 
 
 from django import forms
@@ -107,10 +97,9 @@ from django import forms
 class ImageForm(forms.Form):
     image = forms.FileField()
 
-def upload_file(request):
-    '''Simple view method for uploading an image
 
-    '''
+
+def upload_file(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid() and form.is_multipart():
@@ -123,13 +112,42 @@ def upload_file(request):
     return render(request, 'upload.html', {'form': form})
     #return render_to_response('update.html', {'form': form})
 
+
 from django.conf import settings
 def save_file(file, path=''):
-    ''' Little helper to save a file
-    ''' 
     filename = file._get_name()
     fd = open('%s/%s' % (settings.MEDIA_ROOT, str(path) + str(filename)), 'wb')
     for chunk in file.chunks():
         fd.write(chunk)
     fd.close()
+
+
+
+# Refer to https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#the-staff-member-required-decorator
+@staff_member_required
+def once_manage(request):
+
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid() and form.is_multipart():
+            save_file(request.FILES['image'])
+            return HttpResponse('Thanks for uploading the image')
+        else:
+            return HttpResponse('Invalid image')
+
+
+    form = ImageForm()
+
+    appointments = Appointment.objects.order_by('id')
+    user_photos = UserPhoto.objects.order_by('id')
+
+    context = {
+        "appointments": appointments,
+        "user_photos": user_photos,
+        "form": form,
+    }
+    return render(request, 'once_manage.html', context)
+
+
+
 
