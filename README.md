@@ -5,11 +5,21 @@ Refer to <once2016.com>.
 ## Deployment
 
 ```
+sudo apt-get install -y python python-pip git
+
+git clone https://github.com/tobegit3hub/once2016.git
+
+cd ./once2016/
+
+pip install -r requirements.txt
+
+cd ./website/
+
 python ./manage.py migrate
-```
 
-```
 python manage.py createsuperuser
-```
 
-Go to <http://127.0.0.1:8000/admin/> to manage database models.
+vim ./website/settings.py
+
+# nohup python ./manage.py runserver 0.0.0.0:80 &
+```
