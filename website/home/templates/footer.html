@@ -10,28 +10,28 @@
             <h3>关于</h3>
             <ul>
               <li><a href="/about">公司简介</a></li>
-              <li><a href="#">精美样片</a></li>
+              <li><a href="#">精选样片</a></li>
             </ul>
           </div>
           <div class="col-lg-3  col-md-3 col-sm-6 col-xs-6">
             <h3>服务</h3>
             <ul>
-              <li><a href="#">服务介绍</a></li>
-              <li><a href="#">在线取相</a></li>
+              <li><a href="/appointment">立即预约</a></li>
+              <li><a href="/getphoto">在线取相</a></li>
             </ul>
           </div>
           <div class="col-lg-3  col-md-3 col-sm-6 col-xs-6">
             <h3>合作</h3>
             <ul>
-              <li><a href="#">人才招聘</a></li>
-              <li><a href="#">企业加盟</a></li>
+              <li><a href="/about">人才招聘</a></li>
+              <li><a href="/about">企业加盟</a></li>
             </ul>
           </div>
           <div class="col-lg-3  col-md-3 col-sm-6 col-xs-6">
             <h3>帮助</h3>
             <ul>
               <li><a href="/about#questions">常见问题</a></li>
-              <li><a href="#">联系我们</a></li>
+              <li><a href="#contact-us">联系我们</a></li>
             </ul>
           </div>
 
@@ -55,8 +55,24 @@
 
   </body>
 
-  <script src="/static/jquery/dist/jquery.js"></script>
+  <script src="/static/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script src="/static/masonry/dist/masonry.pkgd.min.js"></script>
+  <script>
+    $(function(){
+      
+      var $waterfall = $('#waterfall');
+      
+      $waterfall.masonry({
+        columnWidth: 230
+      });
+      
+    });
+  </script>
+  
+  <script type="text/javascript" src="/static/masonry/dist/masonry.pkgd.min.js"></script>   
+
 
 <!-- 
 <style>

@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="/static/css/style.css">
 
+
 </head>
 <body>
 
@@ -22,7 +23,7 @@
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <img alt="Brand" height="26px" src="/static/images/once-logo.png">
         </a>
       </div>
@@ -30,16 +31,16 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#"> Once <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">服务介绍</a></li>
-          <li><a href="#">精美样片</a></li>
-          <li><a href="#">在线取相</a></li> 
+          <li class="active"><a href="/"> Once <span class="sr-only">(current)</span></a></li>
+          <li><a href="/about">服务介绍</a></li>
+          <li><a href="/photos">精选样片</a></li>
+          <li><a href="/getphoto">在线取相</a></li> 
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">立即预约</a></li>
+          <li><a href="/appointment">立即预约</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">联系我们 <span class="caret"></span></a>
+            <a href="#" id="contact-us" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">联系我们 <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><div style='margin:10px'><img src="/static/images/once-wechat-qrcode.bmp" width="100%"></div>
                 <li role="separator" class="divider"></li>

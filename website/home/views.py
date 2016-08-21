@@ -18,3 +18,11 @@ def index(request):
 def about(request):
 	context = {}
 	return render(request, 'about.html', context)
+
+def photos(request):
+	context = {}
+	return render(request, 'photos.html', context)
+
+def getphoto(request):
+	context = {}
+	return render(request, 'getphoto.html', context)
