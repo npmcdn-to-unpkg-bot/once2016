@@ -50,3 +50,25 @@ def getphoto_result(request):
 		context = {"authorize": False, "message": "you are not allowed get the image"}
 
     return render(request, 'getphoto_result.html', context)
+
+
+def appointment(request):
+    context = {}
+    return render(request, 'appointment.html', context)
+
+
+def appointment_result(request):
+    user_name = request.POST.get("user_name", "")
+    user_phone = request.POST.get("user_phone", "")
+    access_code = request.POST.get("access_code", "")
+    
+    if user_name and user_phone and access_code:
+        try:
+            user_photo  = UserPhoto.objects.get(user_name=user_name, user_phone=user_phone, access_code=access_code)
+            context = {"authorize": True, "message": "ok, get your image", "photo_name": user_photo.photo_name}
+        except UserPhoto.DoesNotExist:
+            context = {"authorize": False, "message": "user name or access code error"}
+    else:
+        context = {"authorize": False, "message": "you are not allowed get the image"}
+
+    return render(request, 'getphoto_result.html', context)

@@ -1,21 +1,125 @@
 {% include "header.html" %}
 
 
-
-
 <div class="container">
 
+	<div class="text-center" style='margin:30px auto'><h2>预约拍照</h2></div>
 
-	<div class="text-center" style='margin:30px auto'><h2>精选样片</h2></div>
+	<form method="post" action="{% url 'home:getphoto_result'%}" class="form-horizontal">
+
+		{% csrf_token %}
+
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">姓名</label>
+			<div class="col-sm-10">
+				<input type="text" name="user_name" class="form-control" id="inputEmail3" placeholder="陈某">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="inputPassword3" class="col-sm-2 control-label">电话</label>
+			<div class="col-sm-10">
+				<input type="text" name="user_phone" class="form-control" id="inputPassword3" placeholder="159XXXXXXXX">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">邮箱</label>
+			<div class="col-sm-10">
+				<input type="email" name="user_email" class="form-control" id="inputEmail3" placeholder="XXX@gmail.com">
+			</div>
+		</div>
+
+		<div class="form-group">
+		    <!-- refer to https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date -->
+			<label for="inputPassword3" class="col-sm-2 control-label">预约日期</label>
+			<div class="col-sm-10">
+				<input type="date" name="appointment_date" class="form-control" id="inputPassword3">
+			</div>
+		</div>
 
 
+		<div class="form-group">
+			<label for="inputPassword3" class="col-sm-2 control-label">预约时间</label>
+			<div class="col-sm-10">
+
+                <!-- <div class="radio disabled">, refer to http://getbootstrap.com/css/#checkboxes-and-radios -->
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time1" value="time1"> 9:00
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time2" value="time2"> 9:30
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time3" value="time3"> 10:00
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time4" value="time4"> 10:30
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time5" value="time5"> 11:00
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time6" value="time6"> 11:30
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time7" value="time7"> 12:00
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time8" value="time8"> 12:30
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time9" value="time9"> 13:00
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time10" value="time10"> 13:30
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time11" value="time11"> 14:00
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time12" value="time12"> 14:30
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time13" value="time13"> 15:00
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time14" value="time14"> 15:30
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time15" value="time15"> 16:00
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time16" value="time16"> 16:30
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time17" value="time17"> 17:00
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time18" value="time18"> 17:30
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time19" value="time19"> 18:00
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time20" value="time20"> 18:30
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="appointment_time" id="time21" value="time21"> 19:00
+				</label>
+				
+			</div>
+		</div>
 
 
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default">立即预约</button>
+			</div>
+		</div>
 
 
-
-
-
+	</form>
 
 </div>
 

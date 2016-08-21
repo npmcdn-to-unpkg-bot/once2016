@@ -10,4 +10,6 @@ urlpatterns = [
     url(r'^photos/$', views.photos, name='photos'),
     url(r'^getphoto/$', views.getphoto, name='getphoto'),
     url(r'^getphoto/result/$', views.getphoto_result, name='getphoto_result'),
+    url(r'^appointment/$', views.appointment, name='appointment'),
+    url(r'^appointment/result/$', views.appointment_result, name='appointment_result'),    
 ]
