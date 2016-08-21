@@ -72,9 +72,7 @@ def appointment_result(request):
     
     if user_name and user_phone and user_email and photo_type and photo_people_number and appointment_date and appointment_time:
         try:   
-            appointment = Appointment(appointment_date=appointment_date, appointment_time=appointment_time)
-            
-            if appointment.id != None:
+            if Appointment.objects.filter(appointment_date=appointment_date, appointment_time=appointment_time).exists():
                 context = {"success": False, "message": "some one have made appointment at that time"}
             else:
                 appointment = Appointment(user_name=user_name, user_phone=user_phone, user_email=user_email, photo_type=photo_type, photo_people_number=photo_people_number, appointment_date=appointment_date, appointment_time=appointment_time)
