@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 import logging
 import json
@@ -48,7 +50,7 @@ def getphoto_action(request, question_id):
         '''
       
     else:
-    	pass
+    	return HttpResponseRedirect(reverse('home:getphoto_result', args=(question_id,)))
     	'''
         selected_choice.votes += 1
         selected_choice.save()
@@ -59,9 +61,12 @@ def getphoto_action(request, question_id):
         '''
 
 
-def getphoto_result(request):
+def getphoto_result(request, question_id):
 	#def results(request, question_id):
     #question = get_object_or_404(Question, pk=question_id)
     #return render(request, 'polls/results.html', {'question': question})
-	context = {}
-	return render(request, 'getphoto.html', context)
+    if question_id == 11:
+        context = {"message": "ok, get your image"}
+    else:
+        context = {"message": "you can not get the image"}
+    return render(request, 'getphoto_result.html', context)
