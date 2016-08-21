@@ -70,10 +70,14 @@ def appointment_result(request):
     if user_name and user_phone and user_email and photo_type and photo_people_number and appointment_date and appointment_time:
         try:
 
-            appointment = Appointment(user_name=user_name, user_phone=user_phone, user_email=user_email, photo_type=photo_type, photo_people_number=photo_people_number, appointment_date=appointment_date, appointment_time=appointment_time)
-            appointment.save()
-            
-            context = {"success": True, "message": "ok, success to record the appointment", "appointment": appointment}
+            try:
+                appointment = Appointment(appointment_date=appointment_date, appointment_time=appointment_time)
+                context = {"success": False, "message": "some one have made appointment at that time"}
+            except UserPhoto.DoesNotExist:
+
+                appointment = Appointment(user_name=user_name, user_phone=user_phone, user_email=user_email, photo_type=photo_type, photo_people_number=photo_people_number, appointment_date=appointment_date, appointment_time=appointment_time)
+                appointment.save()
+                context = {"success": True, "message": "ok, success to record the appointment", "appointment": appointment}
 
         except Exception as e:
             context = {"success": False, "message": "fail to record the assignment" + str(e)}
