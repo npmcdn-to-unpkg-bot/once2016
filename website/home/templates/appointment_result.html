@@ -3,16 +3,17 @@
 
 <div class="container">
 
-	<div class="text-center" style='margin:30px auto'><h2>在线取相结果</h2></div>
+	<div class="text-center" style='margin:30px auto'><h2>摄影预约结果</h2></div>
 
 	<h1>Message is {{ message }}</h1>
 
-	{% if authorize %}
+	{% if success %}
 
-	<img src="/static/userphotos/{{photo_name}}">
+	<h1>OK</h1>
+
 	{% else %}
 
-	<h1> Not allow !!!</h1>
+	<h1> Not OK</h1>
 
 	{% endif %}
 

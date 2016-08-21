@@ -14,6 +14,10 @@ class Appointment(models.Model):
     user_name = models.CharField(max_length=32)
     user_phone = models.CharField(max_length=32)
     user_email = models.CharField(max_length=32)
+    photo_type = models.CharField(max_length=32, default="")
+    photo_people_number = models.CharField(max_length=32, default="")
+    appointment_date = models.CharField(max_length=32, default="")
+    appointment_time = models.CharField(max_length=32, default="")
     #submit_time = models.DateTimeField(default=datetime.datetime.now)
     #finish_time = models.DateTimeField(default=datetime.datetime.now, blank=True)
 
