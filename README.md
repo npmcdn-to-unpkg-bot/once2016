@@ -5,6 +5,7 @@ once2016.com
 ## Deployment
 
 ```
+python ./manage.py makemigrations home
 python ./manage.py migrate
 ```
 

@@ -1,10 +1,13 @@
-from django.shortcuts import render
+
 
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.http import Http404
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 
 import logging
 import json
@@ -37,13 +40,13 @@ def getphoto_result(request):
     user_phone = request.POST.get("user_phone", "")
     access_code = request.POST.get("access_code", "")
     
-
     if user_name and user_phone and access_code:
-    	photo_name = "1.jpg"
-    	context = {"authorize": True, "message": "ok, get your image", "photo_name": photo_name}
-    	return render(request, 'getphoto_result.html', context)
-	
-    #question = get_object_or_404(Question, pk=question_id)
-    #return render(request, 'polls/results.html', {'question': question})
-    context = {"authorize": False, "message": "you are not allowed get the image"}
+        try:
+            user_photo  = UserPhoto.objects.get(user_name=user_name, user_phone=user_phone, access_code=access_code)
+            context = {"authorize": True, "message": "ok, get your image", "photo_name": user_photo.photo_name}
+        except UserPhoto.DoesNotExist:
+            context = {"authorize": False, "message": "user name or access code error"}
+    else:
+		context = {"authorize": False, "message": "you are not allowed get the image"}
+
     return render(request, 'getphoto_result.html', context)
