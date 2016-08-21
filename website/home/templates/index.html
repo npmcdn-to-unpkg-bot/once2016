@@ -2,21 +2,16 @@
 <html>
 <head>
 
-
 <!--[if IE]>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <![endif]-->
 <meta charset="utf-8">
 <title>Once Photography</title>
-<meta name="description" content="blueimp Gallery is a touch-enabled, responsive and customizable image and video gallery, carousel and lightbox, optimized for both mobile and desktop web browsers. It features swipe, mouse and keyboard navigation, transition effects, slideshow functionality, fullscreen support and on-demand content loading and can be extended to display additional content types.">
+<meta name="description" content="Once photograph.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
 <link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap-theme.min.css">
-
-
-<link rel="stylesheet" href="/static/css/swipe.css">
 
 <link rel="stylesheet" href="/static/css/style.css">
 
@@ -24,7 +19,7 @@
 <body>
 
 
-
+  <!-- nav bar -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -34,7 +29,6 @@
         </a>
 
       </div>
-
 
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,8 +57,7 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-
-
+  <!-- end of nav bar -->
 
 
   <!-- jquery image gallery, refer to http://www.w3schools.com/bootstrap/bootstrap_theme_band.asp#myPage -->
@@ -101,73 +94,27 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
-<!-- swipe image gallery 
-<div id='mySwipe' style='min-width:1000px;margin:0 auto' class='swipe'>
-  <div class='swipe-wrap'>
-
-<div><img width="100%" src="/static/images/banner1.png" alt="Banana"></div>
-<div><img width="100%" src="/static/images/banner2.jpg" alt="Banana"></div>
-<div><img width="100%" src="/static/images/banner3.jpg" alt="Banana"></div>
-
-</div>
-
-  <div style='text-align:center;padding-top:20px;'>
-  
-  <button onclick='mySwipe.prev()'>prev</button> 
-  <button onclick='mySwipe.next()'>next</button>
-
-</div>
---> 
+  <!-- end of image gallery -->
 
 
 
+  <h1 class="text-center"> Once 2016 </h1>
 
+  <div class="col-lg-12">
+    <div class="table-responsive">
 
+      <h1>Welcome to Once photograph</h1>
 
-
-
-
-
-
-
-<h1 class="text-center"> Once 2016 </h1>
-
-
-<div class="col-lg-12">
-  <div class="table-responsive">
-
-    <h1>Welcome to Once photograph</h1>
-
+    </div>
   </div>
-</div>
-
-
-
-<!-- 
-<style>
-#googleMap {
-    width: 100%; /* Span the entire width of the screen */
-    height: 400px; /* Set the height to 400 pixels */
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%); /* Change the color of the map to black and white * /
-}
-</style>
-<div id="googleMap"></div>
--->
-
-<!-- footer -->
 
 
 
 
 
+  <!-- footer -->
+  <footer class="footer" id="footer">
 
-
-
-
-<footer>
-  <div class="footer" id="footer">
     <div class="container">
       <div class="row">
         <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12">
@@ -199,8 +146,6 @@
           </ul>
         </div>
 
-
-
       </div>
       <!--/.row--> 
     </div>
@@ -214,28 +159,11 @@
       </div>
     </div>
 
+  </footer>
 
-  </div>
-  <!--/.footer-->
+  <!-- end of footer -->
 
-</footer>
-
-
-
-
-
-
-
-
-
-</footer>
-
-
-
-
-
-
-
+  <div style='margin: 0px 100px auto auto'><p></p></div>
 
 
 </body>
@@ -245,9 +173,17 @@
 <script type="text/javascript" src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
 
 
-<script src="/static/js/swipe.js"></script>
-
-
+<!-- 
+<style>
+#googleMap {
+    width: 100%; /* Span the entire width of the screen */
+    height: 400px; /* Set the height to 400 pixels */
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%); /* Change the color of the map to black and white * /
+}
+</style>
+<div id="googleMap"></div>
+-->
 
 <!-- Add Google Maps 
 <script src="http://maps.googleapis.com/maps/api/js"></script>
@@ -275,37 +211,5 @@ marker.setMap(map);
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 -->
-
-
-
-
-
-<!-- window.mySwipe = Swipe(document.getElementById('slider')); -->
-<script>
-
-// pure JS
-var elem = document.getElementById('mySwipe');
-window.mySwipe = Swipe(elem, {
-  // startSlide: 4,
-  // auto: 3000,
-  // continuous: true,
-  // disableScroll: true,
-  // stopPropagation: true,
-  // callback: function(index, element) {},
-  // transitionEnd: function(index, element) {}
-});
-
-// with jQuery
-// window.mySwipe = $('#mySwipe').Swipe().data('Swipe');
-
-</script>
-
-
-
-
-
-
-
-
 
 </html>
