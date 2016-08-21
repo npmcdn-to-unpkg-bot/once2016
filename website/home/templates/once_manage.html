@@ -1,0 +1,89 @@
+{% include "header.html" %}
+
+
+<div class="container">
+
+	<div class="text-center" style='margin:30px auto'><h2>Once管理平台</h2></div>
+
+
+
+
+	<h2>预约管理</h2>
+
+	{% if appointments %}
+
+	<!-- Table -->
+	<table class="table table-striped table-hover table-condensed">
+
+		<!-- On rows -->
+		<th class="active">ID</th>
+		<th class="success">姓名</th>
+		<th class="warning">电话</th>
+		<th class="danger">邮箱</th>
+		<th class="info">摄影类型</th>
+		<th class="active">摄影人数</th>
+		<th class="success">预约时间</th>
+
+		{% for appointment in appointments %}
+		<!-- On cells (`td` or `th`) -->
+		<tr>
+			<td class="active">{{ appointment.id }}</td>
+			<td class="success">{{ appointment.user_name }}</td>
+			<td class="warning">{{ appointment.user_phone }}</td>
+			<td class="danger">{{ appointment.user_email }}</td>
+			<td class="info">{{ appointment.photo_type }}</td>
+			<td class="active">{{ appointment.photo_people_number }}</td>
+			<td class="success">{{ appointment.appointment_date }} {{ appointment.appointment_time }}</td>
+		</tr>
+
+		{% endfor %}
+
+	{% else %}
+		<p>No appointments are available.</p>
+	{% endif %}
+
+	</table>
+
+
+    <hr/>
+	<h2>用户照片管理</h2>
+
+	{% if user_photos %}
+
+	<!-- Table -->
+	<table class="table table-striped table-hover table-condensed">
+
+		<!-- On rows -->
+		<th class="active">ID</th>
+		<th class="success">姓名</th>
+		<th class="warning">电话</th>
+		<th class="danger">访问码</th>
+		<th class="info">照片名</th>
+
+		{% for user_photo in user_photos %}
+		<!-- On cells (`td` or `th`) -->
+		<tr>
+			<td class="active">{{ user_photo.id }}</td>
+			<td class="success">{{ user_photo.user_name }}</td>
+			<td class="warning">{{ user_photo.user_phone }}</td>
+			<td class="danger">{{ user_photo.access_code }}</td>
+			<td class="info">{{ user_photo.photo_name }}</td>
+		</tr>
+
+		{% endfor %}
+
+	{% else %}
+		<p>No appointments are available.</p>
+	{% endif %}
+
+	</table>
+
+	<hr/>
+	<h2>数据库管理</h2>
+	<p>添加管理员、修改数据库请访问<a href="/admin"> /admin </a>。</p>
+
+
+</div>
+
+
+{% include "footer.html" %}

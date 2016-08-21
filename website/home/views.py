@@ -18,6 +18,9 @@ from .models import Appointment
 
 logging.basicConfig(level=logging.DEBUG)
 
+from django.contrib.admin.views.decorators import staff_member_required
+
+
 def index(request):
     context = {}
     return render(request, 'index.html', context)
@@ -68,13 +71,12 @@ def appointment_result(request):
     appointment_time = request.POST.get("appointment_time", "") # time3
     
     if user_name and user_phone and user_email and photo_type and photo_people_number and appointment_date and appointment_time:
-        try:
-
-            try:
-                appointment = Appointment(appointment_date=appointment_date, appointment_time=appointment_time)
+        try:   
+            appointment = Appointment(appointment_date=appointment_date, appointment_time=appointment_time)
+            
+            if appointment.id != None:
                 context = {"success": False, "message": "some one have made appointment at that time"}
-            except UserPhoto.DoesNotExist:
-
+            else:
                 appointment = Appointment(user_name=user_name, user_phone=user_phone, user_email=user_email, photo_type=photo_type, photo_people_number=photo_people_number, appointment_date=appointment_date, appointment_time=appointment_time)
                 appointment.save()
                 context = {"success": True, "message": "ok, success to record the appointment", "appointment": appointment}
@@ -85,3 +87,18 @@ def appointment_result(request):
         context = {"success": False, "message": "need more info to record assignment"}
 
     return render(request, 'appointment_result.html', context)
+
+
+
+# Refer to https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#the-staff-member-required-decorator
+@staff_member_required
+def once_manage(request):
+    appointments = Appointment.objects.order_by('id')
+    user_photos = UserPhoto.objects.order_by('id')
+
+    context = {
+        "appointments": appointments,
+        "user_photos": user_photos,
+    }
+    return render(request, 'once_manage.html', context)
+
