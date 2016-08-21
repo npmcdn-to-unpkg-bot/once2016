@@ -10,8 +10,8 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^about/$', views.about, name='about'),
     url(r'^public_photos/$', views.public_photos, name='public_photos'),
-    url(r'^getphoto/$', views.getphoto, name='getphoto'),
-    url(r'^getphoto/result/$', views.getphoto_result, name='getphoto_result'),
+    url(r'^user_photo/$', views.user_photo, name='user_photo'),
+    url(r'^user_photo/result/$', views.user_photo_result, name='user_photo_result'),
     url(r'^appointment/$', views.appointment, name='appointment'),
     url(r'^appointment/result/$', views.appointment_result, name='appointment_result'),
     # Admin url

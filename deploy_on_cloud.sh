@@ -11,10 +11,12 @@ cd ./once2016/
 
 pip install -r requirements.txt
 
-nohup python ./website/manage.py runserver 0.0.0.0:80 &
-
 cd ./website/
 
 python ./manage.py migrate
 
 python manage.py createsuperuser
+
+vim ./website/settings.py
+
+# nohup python ./manage.py runserver 0.0.0.0:80 &

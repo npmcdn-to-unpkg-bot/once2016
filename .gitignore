@@ -1,5 +1,6 @@
 *~
 *.sqlite3
+website/home/static/user_photos/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

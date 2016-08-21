@@ -38,12 +38,12 @@ def public_photos(request):
 	context = {}
 	return render(request, 'public_photos.html', context)
 
-def getphoto(request):
+def user_photo(request):
 	context = {}
-	return render(request, 'getphoto.html', context)
+	return render(request, 'user_photo.html', context)
 
 
-def getphoto_result(request):
+def user_photo_result(request):
     user_name = request.POST.get("user_name", "")
     user_phone = request.POST.get("user_phone", "")
     access_code = request.POST.get("access_code", "")
@@ -57,7 +57,7 @@ def getphoto_result(request):
     else:
 		context = {"authorize": False, "message": "you are not allowed get the image"}
 
-    return render(request, 'getphoto_result.html', context)
+    return render(request, 'user_photo_result.html', context)
 
 
 def appointment(request):

@@ -121,6 +121,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/tmp/'
+MEDIA_ROOT = '/Users/tobe/code/once2016/website/home/static/user_photos/'
 
-MEDIA_URL = '/tmp/'
+MEDIA_URL = '/Users/tobe/code/once2016/website/home/static/user_photos/'

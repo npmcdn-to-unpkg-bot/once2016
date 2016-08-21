@@ -5,11 +5,14 @@
 
 	<div class="text-center" style='margin:30px auto'><h2>在线取相结果</h2></div>
 
-	<h1>Message is {{ message }}</h1>
+	<div class="text-center"><h1>Message is {{ message }}</h1></div>
 
 	{% if authorize %}
 
-	<img src="/userphotos/{{photo_name}}">
+    <div class="text-center">
+		<img src="/static/user_photos/{{photo_name}}">
+	</div>
+
 	{% else %}
 
 	<h1> Not allow !!!</h1>
