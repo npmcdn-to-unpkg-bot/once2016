@@ -1,14 +1,21 @@
 {% include "header.html" %}
 
 
-<div>
+<div class="container">
 
 	<div class="text-center" style='margin:30px auto'><h2>在线取相结果</h2></div>
 
 
 	<h1>Message is {{ message }}</h1>
 
-	<h1>Question id is {{ question_id }}</h1>
+	{% if authorize %}
+
+		<img src="/static/userphotos/{{photo_name}}">
+	{% else %}
+
+		<h1> Not allow !!!</h1>
+
+	{% endif %}
 
 
 </div>

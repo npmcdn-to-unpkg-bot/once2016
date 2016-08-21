@@ -28,21 +28,22 @@ def photos(request):
 	return render(request, 'photos.html', context)
 
 def getphoto(request):
-	context = {"id": 10}
-	# question = get_object_or_404(Question, pk=question_id)
+	context = {}
 	return render(request, 'getphoto.html', context)
 
 
 def getphoto_result(request):
+    user_name = request.POST.get("user_name", "")
+    user_phone = request.POST.get("user_phone", "")
+    access_code = request.POST.get("access_code", "")
+    
 
-    #request.POST['choice']
-    question_id = "10"
-
-	#def results(request, question_id):
+    if user_name and user_phone and access_code:
+    	photo_name = "1.jpg"
+    	context = {"authorize": True, "message": "ok, get your image", "photo_name": photo_name}
+    	return render(request, 'getphoto_result.html', context)
+	
     #question = get_object_or_404(Question, pk=question_id)
     #return render(request, 'polls/results.html', {'question': question})
-    if question_id == "10":
-        context = {"message": "ok, get your image", "question_id": question_id}
-    else:
-        context = {"message": "you can not get the image!!!", "question_id": question_id}
+    context = {"authorize": False, "message": "you are not allowed get the image"}
     return render(request, 'getphoto_result.html', context)
