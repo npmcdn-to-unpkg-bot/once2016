@@ -1,4 +1,5 @@
-
+#!/usr/bin/env python
+# -*- coding: utf=8 -*-
 
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -9,6 +10,8 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render 
 from django.shortcuts import render_to_response
+from django.conf import settings
+from django import forms
 
 import logging
 import json
@@ -90,30 +93,10 @@ def appointment_result(request):
 
 
 
-
-
-from django import forms
-
 class ImageForm(forms.Form):
     image = forms.FileField()
 
 
-
-def upload_file(request):
-    if request.method == 'POST':
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid() and form.is_multipart():
-            save_file(request.FILES['image'])
-            return HttpResponse('Thanks for uploading the image')
-        else:
-            return HttpResponse('Invalid image')
-    else:
-        form = ImageForm()
-    return render(request, 'upload.html', {'form': form})
-    #return render_to_response('update.html', {'form': form})
-
-
-from django.conf import settings
 def save_file(file, path=''):
     filename = file._get_name()
     fd = open('%s/%s' % (settings.MEDIA_ROOT, str(path) + str(filename)), 'wb')
@@ -126,26 +109,47 @@ def save_file(file, path=''):
 # Refer to https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#the-staff-member-required-decorator
 @staff_member_required
 def once_manage(request):
-
-    if request.method == 'POST':
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid() and form.is_multipart():
-            save_file(request.FILES['image'])
-            return HttpResponse('Thanks for uploading the image')
-        else:
-            return HttpResponse('Invalid image')
-
-
     form = ImageForm()
+    appointments = Appointment.objects.order_by('-id')[:50]
+    user_photos = UserPhoto.objects.order_by('-id')[:50]
 
-    appointments = Appointment.objects.order_by('id')
-    user_photos = UserPhoto.objects.order_by('id')
 
-    context = {
-        "appointments": appointments,
-        "user_photos": user_photos,
-        "form": form,
-    }
+
+    # Request to upload file
+    if request.method == 'POST':
+        user_name = request.POST.get("user_name", "")       
+        user_phone = request.POST.get("user_phone", "")
+        access_code = request.POST.get("access_code", "")
+     
+        if user_name and user_phone and access_code:
+            try:
+                # Ignore if the instance exists
+                if UserPhoto.objects.filter(user_name=user_name, user_phone=user_phone, access_code=access_code).exists():
+                    context = {"success": False, "message": "照片信息完全重复，不能上传", "appointments": appointments, "user_photos": user_photos, "form": form}
+                else:
+                    # Upload and save locally
+                    form = ImageForm(request.POST, request.FILES)
+                    if form.is_valid() and form.is_multipart():
+                        save_file(request.FILES['image'])
+
+                        photo_name = str(request.FILES['image']._get_name())
+                        user_photo  = UserPhoto(user_name=user_name, user_phone=user_phone, access_code=access_code, photo_name=photo_name)
+                        user_photo.save()
+                        context = {"success": True, "message": "成功上传并保存到数据库", "appointments": appointments, "user_photos": user_photos, "form": form}
+            except Exception as e:
+                context = {"success": False, "message": "失败，错误日志" + str(e), "appointments": appointments, "user_photos": user_photos, "form": form}
+
+        else:
+            context = {"success": False, "message": "信息不全，不能上传", "appointments": appointments, "user_photos": user_photos, "form": form}
+
+    # Request to access once manage page
+    elif request.method == 'GET':
+        context = {
+            "appointments": appointments,
+            "user_photos": user_photos,
+            "form": form,
+        }
+
     return render(request, 'once_manage.html', context)
 
 
