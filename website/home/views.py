@@ -7,7 +7,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.http import Http404
 from django.shortcuts import get_object_or_404
-from django.shortcuts import render
+from django.shortcuts import render 
+from django.shortcuts import render_to_response
 
 import logging
 import json
@@ -99,4 +100,36 @@ def once_manage(request):
         "user_photos": user_photos,
     }
     return render(request, 'once_manage.html', context)
+
+
+from django import forms
+
+class ImageForm(forms.Form):
+    image = forms.FileField()
+
+def upload_file(request):
+    '''Simple view method for uploading an image
+
+    '''
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid() and form.is_multipart():
+            save_file(request.FILES['image'])
+            return HttpResponse('Thanks for uploading the image')
+        else:
+            return HttpResponse('Invalid image')
+    else:
+        form = ImageForm()
+    return render(request, 'upload.html', {'form': form})
+    #return render_to_response('update.html', {'form': form})
+
+from django.conf import settings
+def save_file(file, path=''):
+    ''' Little helper to save a file
+    ''' 
+    filename = file._get_name()
+    fd = open('%s/%s' % (settings.MEDIA_ROOT, str(path) + str(filename)), 'wb')
+    for chunk in file.chunks():
+        fd.write(chunk)
+    fd.close()
 

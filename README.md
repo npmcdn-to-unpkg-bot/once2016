@@ -1,11 +1,10 @@
-# once2016
-once2016.com
-
+## Introduction
+ 
+Refer to <once2016.com>.
 
 ## Deployment
 
 ```
-python ./manage.py makemigrations home
 python ./manage.py migrate
 ```
 
