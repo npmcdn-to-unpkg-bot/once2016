@@ -5,15 +5,20 @@
 
 	<div class="text-center" style='margin:30px auto'><h2>摄影预约结果</h2></div>
 
-	<h1>Message is {{ message }}</h1>
 
 	{% if success %}
 
-	<h1>OK</h1>
+	<div class="alert alert-success alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<strong>Success!</strong> {{ message }}
+	</div>
 
 	{% else %}
 
-	<h1> Not OK</h1>
+	<div class="alert alert-danger alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<strong>Error!</strong> {{ message }}
+	</div>
 
 	{% endif %}
 

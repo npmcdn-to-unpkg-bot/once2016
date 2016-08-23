@@ -51,11 +51,11 @@ def user_photo_result(request):
     if user_name and user_phone and access_code:
         try:
             user_photo  = UserPhoto.objects.get(user_name=user_name, user_phone=user_phone, access_code=access_code)
-            context = {"authorize": True, "message": "ok, get your image", "photo_name": user_photo.photo_name}
+            context = {"success": True, "message": "认证通过，返回照片", "photo_name": user_photo.photo_name}
         except UserPhoto.DoesNotExist:
-            context = {"authorize": False, "message": "user name or access code error"}
+            context = {"success": False, "message": "账号或者访问码错误"}
     else:
-		context = {"authorize": False, "message": "you are not allowed get the image"}
+		context = {"success": False, "message": "信息不全，无法获取照片"}
 
     return render(request, 'user_photo_result.html', context)
 
@@ -77,20 +77,18 @@ def appointment_result(request):
     if user_name and user_phone and user_email and photo_type and photo_people_number and appointment_date and appointment_time:
         try:   
             if Appointment.objects.filter(appointment_date=appointment_date, appointment_time=appointment_time).exists():
-                context = {"success": False, "message": "some one have made appointment at that time"}
+                context = {"success": False, "message": "该时间段已有预约，请重新选择预约时间"}
             else:
                 appointment = Appointment(user_name=user_name, user_phone=user_phone, user_email=user_email, photo_type=photo_type, photo_people_number=photo_people_number, appointment_date=appointment_date, appointment_time=appointment_time)
                 appointment.save()
-                context = {"success": True, "message": "ok, success to record the appointment", "appointment": appointment}
+                context = {"success": True, "message": "恭喜你，成功预约", "appointment": appointment}
 
         except Exception as e:
-            context = {"success": False, "message": "fail to record the assignment" + str(e)}
+            context = {"success": False, "message": "预约失败，错误信息: " + str(e)}
     else:
-        context = {"success": False, "message": "need more info to record assignment"}
+        context = {"success": False, "message": "信息不全，预约失败"}
 
     return render(request, 'appointment_result.html', context)
-
-
 
 
 class ImageForm(forms.Form):
@@ -105,15 +103,12 @@ def save_file(file, path=''):
     fd.close()
 
 
-
 # Refer to https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#the-staff-member-required-decorator
 @staff_member_required
 def once_manage(request):
     form = ImageForm()
     appointments = Appointment.objects.order_by('-id')[:50]
     user_photos = UserPhoto.objects.order_by('-id')[:50]
-
-
 
     # Request to upload file
     if request.method == 'POST':
@@ -151,7 +146,3 @@ def once_manage(request):
         }
 
     return render(request, 'once_manage.html', context)
-
-
-
-

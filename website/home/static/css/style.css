@@ -168,7 +168,7 @@
 
 /* image radio style */
 label > input{ /* HIDE RADIO */
-   display:none;
+	display:none;
 }
 
 label > input + img{ /* IMAGE STYLES */
