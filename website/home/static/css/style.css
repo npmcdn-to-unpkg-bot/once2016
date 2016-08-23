@@ -124,7 +124,7 @@
 	text-transform: uppercase;
 	font-size: 9px;
 	/* width: 33.33%; */
-    width: 25%;
+	width: 25%;
 	float: left;
 	position: relative;
 }
@@ -167,15 +167,16 @@
 
 
 /* image radio style */
-
 label > input{ /* HIDE RADIO */
-  /* display:none; */
+   display:none;
 }
+
 label > input + img{ /* IMAGE STYLES */
-  cursor:pointer;
-  border:2px solid transparent;
+	cursor:pointer;
+	border:2px solid transparent;
 }
 label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
+	border:2px solid #f00;
 }
 
+/* end of image radio style */
