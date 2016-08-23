@@ -1,31 +1,159 @@
 {% include "header.html" %}
 
+<!-- appointment form, refer to http://thecodeplayer.com/walkthrough/jquery-multi-step-form-with-progress-bar -->
 <!-- multistep form -->
-<form id="msform">
+<form id="msform" method="post" action="{% url 'home:appointment_result'%}">
+	{% csrf_token %}
+
 	<!-- progressbar -->
 	<ul id="progressbar">
 		<li class="active">Account Setup</li>
 		<li>Social Profiles</li>
 		<li>Personal Details</li>
+		<li>预约时间</li>
 	</ul>
 	<!-- fieldsets -->
+
 	<fieldset>
-		<h2 class="fs-title">Create your account</h2>
-		<h3 class="fs-subtitle">This is step 1</h3>
-		<input type="text" name="email" placeholder="Email" />
-		<input type="password" name="pass" placeholder="Password" />
-		<input type="password" name="cpass" placeholder="Confirm Password" />
-		<input type="button" name="next" class="next action-button" value="Next" />
+		<h2 class="fs-title">摄影类型</h2>
+		<h3 class="fs-subtitle"></h3>
+
+		<label class="radio">
+			<input type="radio" name="photo_type" id="type1" value="type1"> 证件拍摄
+		</label>
+		<label class="radio">
+			<input type="radio" name="photo_type" id="type2" value="type2"> 婚礼跟拍
+		</label>
+		<label class="radio">
+			<input type="radio" name="photo_type" id="type3" value="type3"> 儿童亲子
+		</label>
+		<label class="radio">
+			<input type="radio" name="photo_type" id="type4" value="type4"> 产品拍摄
+		</label>
+		<label class="radio">
+			<input type="radio" name="photo_type" id="type5" value="type5"> 活动沙龙
+		</label>
+		<label class="radio">
+			<input type="radio" name="photo_type" id="type6" value="type6"> 写真留恋
+		</label>
+
+		<input type="button" name="next" class="next action-button" value="下一步" />
+
 	</fieldset>
+
 	<fieldset>
-		<h2 class="fs-title">Social Profiles</h2>
-		<h3 class="fs-subtitle">Your presence on the social network</h3>
-		<input type="text" name="twitter" placeholder="Twitter" />
-		<input type="text" name="facebook" placeholder="Facebook" />
-		<input type="text" name="gplus" placeholder="Google Plus" />
-		<input type="button" name="previous" class="previous action-button" value="Previous" />
-		<input type="button" name="next" class="next action-button" value="Next" />
+		<h2 class="fs-title">拍摄人数</h2>
+		<h3 class="fs-subtitle"></h3>
+
+		<label class="radio">
+			<input type="radio" name="photo_people_number" id="number1" value="number1"> 1人
+		</label>
+		<label class="radio">
+			<input type="radio" name="photo_people_number" id="number2" value="number2"> 2人
+		</label>
+		<label class="radio">
+			<input type="radio" name="photo_people_number" id="number3" value="number3"> 3人
+		</label>
+		<label class="radio">
+			<input type="radio" name="photo_people_number" id="number4" value="number4"> 更多
+		</label>
+
+		<input type="button" name="previous" class="previous action-button" value="上一步" />
+		<input type="button" name="next" class="next action-button" value="下一步" />
+
 	</fieldset>
+
+	<fieldset>
+		<h2 class="fs-title">选择时间</h2>
+		<h3 class="fs-subtitle"></h3>
+
+		<input type="date" name="appointment_date" class="form-control" id="inputPassword3">
+
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time1" value="time1"> 9:00
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time2" value="time2"> 9:30
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time3" value="time3"> 10:00
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time4" value="time4"> 10:30
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time5" value="time5"> 11:00
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time6" value="time6"> 11:30
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time7" value="time7"> 12:00
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time8" value="time8"> 12:30
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time9" value="time9"> 13:00
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time10" value="time10"> 13:30
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time11" value="time11"> 14:00
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time12" value="time12"> 14:30
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time13" value="time13"> 15:00
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time14" value="time14"> 15:30
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time15" value="time15"> 16:00
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time16" value="time16"> 16:30
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time17" value="time17"> 17:00
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time18" value="time18"> 17:30
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time19" value="time19"> 18:00
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time20" value="time20"> 18:30
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="appointment_time" id="time21" value="time21"> 19:00
+		</label>
+
+		<p></p>
+		<input type="button" name="previous" class="previous action-button" value="上一步" />
+		<input type="button" name="next" class="next action-button" value="下一步" />
+	</fieldset>
+
+	<fieldset>
+		<h2 class="fs-title">用户信息</h2>
+		<h3 class="fs-subtitle"></h3>
+
+		<input type="text" name="user_name" id="inputEmail3" placeholder="姓名">
+		<input type="text" name="user_phone" id="inputPassword3" placeholder="电话">
+		<input type="email" name="user_email" id="inputEmail3" placeholder="邮箱">
+
+
+		<p></p>
+		<input type="button" name="previous" class="previous action-button" value="上一步" />
+		<button type="submit" class="btn btn-success action-button">立即预约</button>
+
+	</fieldset>
+
+    <!--
 	<fieldset>
 		<h2 class="fs-title">Personal Details</h2>
 		<h3 class="fs-subtitle">We will never sell it</h3>
@@ -33,9 +161,10 @@
 		<input type="text" name="lname" placeholder="Last Name" />
 		<input type="text" name="phone" placeholder="Phone" />
 		<textarea name="address" placeholder="Address"></textarea>
-		<input type="button" name="previous" class="previous action-button" value="Previous" />
-		<input type="submit" name="submit" class="submit action-button" value="Submit" />
+		<input type="button" name="previous" class="previous action-button" value="上一步" />
+		<input type="submit" name="submit" class="submit action-button" value="立即预约" />
 	</fieldset>
+-->
 </form>
 
 
@@ -47,7 +176,7 @@
 
 
 
-<!--
+<!-- normal form
 <div class="container">
 
 	<div class="text-center" style='margin:30px auto'><h2>摄影拍照</h2></div>
@@ -122,7 +251,7 @@
 
 
 		<div class="form-group">
-			<!-- refer to https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date --
+			# refer to https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date --
 			<label for="inputPassword3" class="col-sm-2 control-label">预约日期</label>
 			<div class="col-sm-10">
 				<input type="date" name="appointment_date" class="form-control" id="inputPassword3">
@@ -134,7 +263,7 @@
 			<label for="inputPassword3" class="col-sm-2 control-label">预约时间</label>
 			<div class="col-sm-10">
 
-				<!-- <div class="radio disabled">, refer to http://getbootstrap.com/css/#checkboxes-and-radios --
+				# <div class="radio disabled">, refer to http://getbootstrap.com/css/#checkboxes-and-radios 
 				<label class="radio-inline">
 					<input type="radio" name="appointment_time" id="time1" value="time1"> 9:00
 				</label>
@@ -213,7 +342,8 @@
 	</form>
 
 </div>
--->
+end of normal form -->
+
 
 </body>
 
@@ -223,13 +353,13 @@
 <script src="/static/masonry/dist/masonry.pkgd.min.js"></script>
 <script>
 	$(function(){
-		
+
 		var $waterfall = $('#waterfall');
-		
+
 		$waterfall.masonry({
 			columnWidth: 230
 		});
-		
+
 	});
 </script>
 
