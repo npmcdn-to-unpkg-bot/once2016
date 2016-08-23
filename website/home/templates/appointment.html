@@ -1,5 +1,6 @@
 {% include "header.html" %}
 
+<!-- another multi step form, refer to http://parsleyjs.org/doc/examples.html -->
 <!-- appointment form, refer to http://thecodeplayer.com/walkthrough/jquery-multi-step-form-with-progress-bar -->
 <!-- multistep form -->
 <form id="msform" method="post" action="{% url 'home:appointment_result'%}">
@@ -18,6 +19,30 @@
 		<h2 class="fs-title">摄影类型</h2>
 		<h3 class="fs-subtitle"></h3>
 
+
+		<!-- image radio, refer to http://jsbin.com/image-instead-of-radio-button/3/edit?html,css,output -->
+		<label>
+			<input type="radio" name="photo_type" id="type1" value="type1" />
+			<img width="100%" src="/static/images/photo_type1.png">
+		</label>
+
+		<label>
+			<input type="radio" name="photo_type" id="type2" value="type2" />
+			<img width="100%" src="/static/images/photo_type2.png">
+		</label>
+
+		<label>
+			<input type="radio" name="photo_type" id="type3" value="type3" />
+			<img width="100%" src="/static/images/photo_type3.png">
+		</label>
+
+		<label>
+			<input type="radio" name="photo_type" id="type4" value="type4" />
+			<img width="100%" src="/static/images/photo_type4.png">
+		</label>
+
+
+		<!-- 
 		<label class="radio">
 			<input type="radio" name="photo_type" id="type1" value="type1"> 证件拍摄
 		</label>
@@ -36,6 +61,7 @@
 		<label class="radio">
 			<input type="radio" name="photo_type" id="type6" value="type6"> 写真留恋
 		</label>
+		-->
 
 		<input type="button" name="next" class="next action-button" value="下一步" />
 
