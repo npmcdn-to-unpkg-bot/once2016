@@ -20,6 +20,8 @@ python ./manage.py migrate
 python manage.py createsuperuser
 
 vim ./website/settings.py
+# MEDIA_ROOT = '/root/once2016/website/home/static/user_photos/'
+# MEDIA_URL = '/root/code/once2016/website/home/static/user_photos/'
 
 # nohup python ./manage.py runserver 0.0.0.0:80 &
 ```
