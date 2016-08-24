@@ -5,12 +5,15 @@
 
 	<div class="text-center" style='margin:30px auto'><h2>摄影预约结果</h2></div>
 
-
 	{% if success %}
 
 	<div class="alert alert-success alert-dismissible" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<strong>Success!</strong> {{ message }}
+		<strong>{{ message }}</strong> 付款成功后我们将为您保留时间！
+	</div>
+
+	<div class="text-center">
+		<img src="/static/images/appointment_pay_qrcode.jpg" width="50%">
 	</div>
 
 	{% else %}
