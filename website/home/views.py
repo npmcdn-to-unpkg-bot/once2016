@@ -146,3 +146,101 @@ def once_manage(request):
         }
 
     return render(request, 'once_manage.html', context)
+
+
+
+
+from weixin import handler as HD
+from weixin.backends.dj import Helper, sns_userinfo
+from weixin import WeixinHelper, JsApi_pub, WxPayConf_pub, UnifiedOrder_pub, Notify_pub, catch
+
+import json
+import time
+import random
+import hashlib
+from urllib import quote
+
+from weixin.config import WxPayConf_pub
+from weixin.lib import HttpClient, WeixinHelper
+
+
+@sns_userinfo
+def pay(request):
+    response = render_to_response("pay.html")
+    response.set_cookie("openid", Helper.sign_cookie(request.openid))
+    return response
+
+@sns_userinfo
+@catch
+@csrf_exempt
+def paydetail(request):
+    # Verify signature http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign
+    """获取支付信息"""
+    openid = request.openid
+    money = request.POST.get("money") or "0.01"
+    money = int(float(money)*100)
+
+    jsApi = JsApi_pub()
+    unifiedOrder = UnifiedOrder_pub()
+    unifiedOrder.setParameter("openid",openid) #商品描述
+    unifiedOrder.setParameter("body","充值测试") #商品描述
+    timeStamp = time.time()
+    out_trade_no = "{0}{1}".format(WxPayConf_pub.APPID, int(timeStamp*100))
+    unifiedOrder.setParameter("out_trade_no", out_trade_no) #商户订单号
+    unifiedOrder.setParameter("total_fee", str(money)) #总金额
+    unifiedOrder.setParameter("notify_url", WxPayConf_pub.NOTIFY_URL) #通知地址 
+    unifiedOrder.setParameter("trade_type", "JSAPI") #交易类型
+    unifiedOrder.setParameter("attach", "6666") #附件数据，可分辨不同商家(string(127))
+
+
+    try:
+        prepay_id = unifiedOrder.getPrepayId()
+        jsApi.setPrepayId(prepay_id)
+        jsApiParameters = jsApi.getParameters()
+    except Exception as e:
+        print(e)
+    else:
+        print jsApiParameters
+        return HttpResponse(jsApiParameters)
+
+
+FAIL, SUCCESS = "FAIL", "SUCCESS"
+@catch
+def payback(request):
+    """支付回调"""
+    xml = request.raw_post_data
+    #使用通用通知接口
+    notify = Notify_pub()
+    notify.saveData(xml)
+    print xml
+    '''
+     {"package": "prepay_id=wx20160825222035bef438f0c60078733891", 
+    "timeStamp": "1472134835", "signType": "MD5", 
+    "paySign": "7F99E8E5137EA588572CC1BF982617BF", 
+    "appId": "wx75977e365985b919", 
+    "nonceStr": "wg62p8jgnrcri526x8bah1ldtx7tvlh0"}
+    '''
+
+    #验证签名，并回应微信。
+    #对后台通知交互时，如果微信收到商户的应答不是成功或超时，微信认为通知失败，
+    #微信会通过一定的策略（如30分钟共8次）定期重新发起通知，
+    #尽可能提高通知的成功率，但微信不保证通知最终能成功
+    if not notify.checkSign():
+        notify.setReturnParameter("return_code", FAIL) #返回状态码
+        notify.setReturnParameter("return_msg", "签名失败") #返回信息
+    else:
+        result = notify.getData()
+
+        if result["return_code"] == FAIL:
+            notify.setReturnParameter("return_code", FAIL)
+            notify.setReturnParameter("return_msg", "通信错误")
+        elif result["result_code"] == FAIL:
+            notify.setReturnParameter("return_code", FAIL)
+            notify.setReturnParameter("return_msg", result["err_code_des"])
+        else:
+            notify.setReturnParameter("return_code", SUCCESS)
+            out_trade_no = result["out_trade_no"] #商户系统的订单号，与请求一致。
+            ###检查订单号是否已存在,以及业务代码(业务代码注意重入问题)
+
+    return  HttpResponse(notify.returnXml())
+
