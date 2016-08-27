@@ -1,31 +1,28 @@
 #coding:utf-8
-'''
-Created on 2014-5-13
-
-@author: skycrab
-'''
 
 # Refer to https://github.com/Skycrab/weixin-knife/
+
+from django.conf import settings
+
 
 class WxPayConf_pub(object):
     """配置账号信息"""
 
     #=======【基本信息设置】=====================================
     #微信公众号身份的唯一标识。审核通过后，在微信发送的邮件中查看
-    APPID = "xxx"
+    APPID = settings.WECHAT_APP_ID
     #JSAPI接口中获取openid，审核后在公众平台开启开发模式后可查看
-    APPSECRET = "xxx"
+    APPSECRET = settings.WECHAT_APP_SECRET
     #接口配置token
-    TOKEN = "xxx"
+    TOKEN = settings.WECHAT_TOKEN
     #受理商ID，身份标识
-    MCHID = "xxx"
+    MCHID = settings.WECHAT_MCHID
     #商户支付密钥Key。审核通过后，在微信发送的邮件中查看
-    KEY = "xxx"
-   
+    KEY = settings.WECHAT_PAY_KEY
 
     #=======【异步通知url设置】===================================
     #异步通知url，商户根据实际开发过程设定
-    NOTIFY_URL = "192.168.1.104:8000/payback"
+    NOTIFY_URL = settings.WECHAT_NOTIFY_URL
 
     #=======【证书路径设置】=====================================
     #证书路径,注意应该填写绝对路径

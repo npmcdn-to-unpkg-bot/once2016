@@ -48,13 +48,13 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 /*form styles*/
-#msform {
+#appointment_form {
 	width: 400px;
 	margin: 50px auto;
 	text-align: center;
 	position: relative;
 }
-#msform fieldset {
+#appointment_form fieldset {
 	background: white;
 	border: 0 none;
 	border-radius: 3px;
@@ -68,11 +68,11 @@
 	position: relative;
 }
 /*Hide all except first fieldset*/
-#msform fieldset:not(:first-of-type) {
+#appointment_form fieldset:not(:first-of-type) {
 	display: none;
 }
 /*inputs*/
-#msform input, #msform textarea {
+#appointment_form input, #appointment_form textarea {
 	padding: 15px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -84,7 +84,7 @@
 	font-size: 13px;
 }
 /*buttons*/
-#msform .action-button {
+#appointment_form .action-button {
 	width: 100px;
 	background: #27AE60;
 	font-weight: bold;
@@ -95,7 +95,7 @@
 	padding: 10px 5px;
 	margin: 10px 5px;
 }
-#msform .action-button:hover, #msform .action-button:focus {
+#appointment_form .action-button:hover, #appointment_form .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
 /*headings*/
