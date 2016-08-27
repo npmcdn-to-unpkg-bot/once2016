@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python ./website/manage.py runserver 0.0.0.0:8000
+sudo python ./website/manage.py runserver 0.0.0.0:80

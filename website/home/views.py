@@ -165,12 +165,6 @@ from weixin.lib import HttpClient, WeixinHelper
 
 
 @sns_userinfo
-def pay(request):
-    response = render_to_response("pay.html")
-    response.set_cookie("openid", Helper.sign_cookie(request.openid))
-    return response
-
-@sns_userinfo
 @catch
 @csrf_exempt
 def paydetail(request):

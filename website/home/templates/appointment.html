@@ -3,15 +3,22 @@
 <!-- another multi step form, refer to http://parsleyjs.org/doc/examples.html -->
 <!-- appointment form, refer to http://thecodeplayer.com/walkthrough/jquery-multi-step-form-with-progress-bar -->
 <!-- multistep form -->
+
+<input type="button" value="立即充值" class="chongzhi" id="chongzhi">
+
+
+
+
+
 <form id="msform" method="post" action="{% url 'home:appointment_result'%}">
 	{% csrf_token %}
 
 	<!-- progressbar -->
 	<ul id="progressbar">
-		<li class="active">Account Setup</li>
-		<li>Social Profiles</li>
-		<li>Personal Details</li>
+		<li class="active">摄影类型</li>
+		<li>拍摄人数</li>
 		<li>预约时间</li>
+		<li>客户信息</li>
 	</ul>
 	<!-- fieldsets -->
 
@@ -215,7 +222,7 @@
 </fieldset>
 
 <fieldset>
-	<h2 class="fs-title">用户信息</h2>
+	<h2 class="fs-title">客户信息</h2>
 	<h3 class="fs-subtitle"></h3>
 
 	<input type="text" name="user_name" id="inputEmail3" placeholder="姓名">
@@ -414,11 +421,53 @@
 end of normal form -->
 
 
+
 </body>
+
+
 
 <script src="/static/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/static/js/jquery.easing.1.3.js"></script>
 <script src="/static/js/app.js"></script>
+
+
+
+<script>
+	$(function(){
+		var $cz=$(".chongzhi");
+
+		function pay(){
+			$momey = 0.1
+			$.post("/paydetail/",{
+				money: $momey
+			},function(data){
+				if(data){
+          // Refer to https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&index=6
+          var jsonobj = eval('('+data+')');
+
+          WeixinJSBridge.invoke('getBrandWCPayRequest', {
+                 "appId" : jsonobj.appId, //公众号名称，由商户传入
+                 "timeStamp" : jsonobj.timeStamp, //时间戳
+                 "nonceStr" : jsonobj.nonceStr, //随机串
+                 "package" : jsonobj.package,//扩展包
+                 "signType" : "MD5", //微信签名方式:1.sha1
+                 "paySign" : jsonobj.paySign //微信签名
+             }, function(res){
+             	if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+					               alert("支付成功"); // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
+					           } else {
+					           	alert("支出异常");
+					           }
+					       });
+      }
+  }
+  );
+		}
+		$cz.click(function(){
+			setTimeout(pay, 100);      
+		});
+	});
+</script>
 
 </html>

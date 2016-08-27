@@ -139,6 +139,7 @@
 	background: white;
 	border-radius: 3px;
 	margin: 0 auto 5px auto;
+	/* margin: 0 0 0 13px; */
 }
 /*progressbar connectors*/
 #progressbar li:after {

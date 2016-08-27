@@ -17,7 +17,6 @@ urlpatterns = [
     # Admin url
     url(r'^once/$', views.once_manage, name='once_manage'),
 
-    url(r'^wxpay/$', views.pay, name='pay'),
     url(r'^paydetail/$', views.paydetail, name='paydetail'),
     url(r'^payback/$', views.payback, name='payback'),
 ]
