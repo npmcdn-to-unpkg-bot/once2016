@@ -39,10 +39,10 @@
 		<th class="active">ID</th>
 		<th class="success">姓名</th>
 		<th class="warning">电话</th>
-		<th class="danger">邮箱</th>
-		<th class="info">摄影类型</th>
-		<th class="active">摄影人数</th>
-		<th class="success">预约时间</th>
+		<th class="danger">摄影类型</th>
+		<th class="info">摄影人数</th>
+		<th class="active">预约时间</th>
+		<th class="success">下单时间(+8:00)</th>
 
 		{% for appointment in appointments %}
 		<!-- On cells (`td` or `th`) -->
@@ -50,10 +50,10 @@
 			<td class="active">{{ appointment.id }}</td>
 			<td class="success">{{ appointment.user_name }}</td>
 			<td class="warning">{{ appointment.user_phone }}</td>
-			<td class="danger">{{ appointment.user_email }}</td>
-			<td class="info">{{ appointment.photo_type }}</td>
-			<td class="active">{{ appointment.photo_people_number }}</td>
-			<td class="success">{{ appointment.appointment_date }} {{ appointment.appointment_time }}</td>
+			<td class="danger">{{ appointment.photo_type }}</td>
+			<td class="info">{{ appointment.photo_people_number }}</td>
+			<td class="active">{{ appointment.appointment_date }} {{ appointment.appointment_time }}</td>
+			<td class="success">{{ appointment.submit_time }}</td>
 		</tr>
 
 		{% endfor %}

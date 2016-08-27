@@ -121,5 +121,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# For upload images
 MEDIA_ROOT = '/Users/tobe/code/once2016/website/home/static/user_photos/'
 MEDIA_URL = '/Users/tobe/code/once2016/website/home/static/user_photos/'
+
+# For wechat pay
+WECHAT_APP_ID = "xxx"
+WECHAT_APP_SECRET = "xxx"
+WECHAT_TOKEN = "xxx"
+WECHAT_MCHID = "xxx"
+WECHAT_PAY_KEY = "xxx"
+WECHAT_NOTIFY_URL = "127.0.0.1/payback"

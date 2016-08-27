@@ -68,25 +68,27 @@ def appointment(request):
 def appointment_result(request):
     user_name = request.POST.get("user_name", "")
     user_phone = request.POST.get("user_phone", "")
-    user_email = request.POST.get("user_email", "")
     photo_type = request.POST.get("photo_type", "")
     photo_people_number = request.POST.get("photo_people_number", "")
     appointment_date = request.POST.get("appointment_date", "") # 2016-08-03
     appointment_time = request.POST.get("appointment_time", "") # time3
     
-    if user_name and user_phone and user_email and photo_type and photo_people_number and appointment_date and appointment_time:
-        try:   
-            if Appointment.objects.filter(appointment_date=appointment_date, appointment_time=appointment_time).exists():
-                context = {"success": False, "message": "该时间段已有预约，请重新选择预约时间"}
-            else:
-                appointment = Appointment(user_name=user_name, user_phone=user_phone, user_email=user_email, photo_type=photo_type, photo_people_number=photo_people_number, appointment_date=appointment_date, appointment_time=appointment_time)
-                appointment.save()
-                context = {"success": True, "message": "恭喜你，成功预约", "appointment": appointment}
+    #if user_name and user_phone and photo_type and photo_people_number and appointment_date and appointment_time:
 
-        except Exception as e:
-            context = {"success": False, "message": "预约失败，错误信息: " + str(e)}
-    else:
-        context = {"success": False, "message": "信息不全，预约失败"}
+    try:   
+        #if Appointment.objects.filter(appointment_date=appointment_date, appointment_time=appointment_time).exists():
+        #    context = {"success": False, "message": "该时间段已有预约，请重新选择预约时间"}
+        #else:
+
+        appointment = Appointment(user_name=user_name, user_phone=user_phone, photo_type=photo_type, photo_people_number=photo_people_number, appointment_date=appointment_date, appointment_time=appointment_time)
+        appointment.save()
+        context = {"success": True, "message": "恭喜你，成功预约", "appointment": appointment}
+
+    except Exception as e:
+        context = {"success": False, "message": "预约失败，错误信息: " + str(e)}
+
+    #else:
+    #    context = {"success": False, "message": "信息不全，预约失败"}
 
     return render(request, 'appointment_result.html', context)
 

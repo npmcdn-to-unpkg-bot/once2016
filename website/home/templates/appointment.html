@@ -222,7 +222,6 @@
 
 	<input type="text" name="user_name" id="inputEmail3" placeholder="姓名">
 	<input type="text" name="user_phone" id="inputPassword3" placeholder="电话">
-	<input type="text" name="user_email" id="inputEmail3" placeholder="邮箱">
 
 
 	<p></p>
@@ -454,7 +453,8 @@ end of normal form -->
 					               //alert("支付成功"); // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
 					               document.getElementById("appointment_form").submit();
 					           } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
-					           	alert("支付已取消，请重新支付");
+					           	//alert("支付已取消，请重新支付");
+					           	document.getElementById("appointment_form").submit();
 					           } else {
 					           	alert("支出异常，异常信息: " + res.err_msg);
 					           }

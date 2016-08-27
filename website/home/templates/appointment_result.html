@@ -9,18 +9,35 @@
 
 	<div class="alert alert-success alert-dismissible" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<strong>恭喜预约成功！</strong> 长按图片”识别图中二维码“，付款成功后我们将为您保留时间！
+		恭喜 <strong>{{ appointment.user_name}}</strong> 预约成功！
 	</div>
 
-	<div class="text-center">
-		<img src="/static/images/appointment_pay_qrcode.jpg" width="70%">
-	</div>
+	<table class="table table-bordered">
+		<th class="active">类型</th>
+		<th class="active">信息</th>
+
+		<tr>
+			<td>联系姓名</td>
+			<td>{{ appointment.user_name }}</td>
+		</tr>
+
+		<tr>
+			<td>联系电话</td>
+			<td>{{ appointment.user_phone }}</td>
+		</tr>
+
+		<tr>
+			<td>拍摄时间</td>
+			<td>{{ appointment.appointment_date }} {{ appointment.appointment_time }}</td>
+		</tr>
+
+	</table>
 
 	{% else %}
 
 	<div class="alert alert-danger alert-dismissible" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<strong>Error!</strong> {{ message }}
+		<strong>预约失败，请联系微信客服</strong>
 	</div>
 
 	{% endif %}
